@@ -2,7 +2,6 @@ package no.hvl.dat250.jpa.tutorial.creditcards.driver;
 
 import no.hvl.dat250.jpa.tutorial.creditcards.*;
 
-
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -13,7 +12,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 public class CreditCardsMainTest {
 
@@ -27,12 +25,12 @@ public class CreditCardsMainTest {
     @Test
     public void testDomainModelPersistence() {
         // Run the main class to persist the objects.
-        CreditCardsMain.main(new String[]{});
+        CreditCardsMain.main(new String[] {});
 
         EntityManager em = factory.createEntityManager();
 
         // Load customer
-        Customer customer = em.find(Customer.class, 1L);
+        Customer customer = em.find(Customer.class, 1);
 
         // Test person data
         assertEquals(customer.getName(), "Max Mustermann");
@@ -61,13 +59,14 @@ public class CreditCardsMainTest {
         // Test pincode
         Pincode firstCardPincode = firstCard.getPincode();
 
-        assertEquals(firstCardPincode.getId(), secondCard.getPincode().getId()); // Pincode objects of the two cards are identical!
+        assertEquals(firstCardPincode.getId(), secondCard.getPincode().getId()); // Pincode objects of the two cards are
+                                                                                 // identical!
         assertEquals(firstCardPincode.getCode(), "123");
         assertEquals(firstCardPincode.getCount(), 1);
 
         // Test bank
         Bank bank = firstCard.getOwningBank();
-        assertEquals(bank.getId(),secondCard.getOwningBank().getId()); // Bank objects of the two cards are identical!
+        assertEquals(bank.getId(), secondCard.getOwningBank().getId()); // Bank objects of the two cards are identical!
         assertEquals(bank.getName(), "Pengebank");
         assertEquals(bank.getOwnedCards(), Set.of(firstCard, secondCard));
     }

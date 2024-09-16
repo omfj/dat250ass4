@@ -2,7 +2,7 @@
 
 [![Experiment 2 tests](../../actions/workflows/main.yml/badge.svg)](../../actions/workflows/main.yml)
 
-1. Activate the automatic tests on commit under the Actions tab. 
+1. Activate the automatic tests on commit under the Actions tab.
 2. **Make sure that the test suite located under src/test/java runs successfully after your implementation!**
 3. A green tick should appear next to your commit in the GitHub repository since test cases are executed upon code changes. You can check those runs under the Actions tab.
 
@@ -34,7 +34,7 @@ public class Family {
 
   @OneToMany(mappedBy = "family")
   private final List<Person> members = new ArrayList<>();
-  
+
   // getters and setters
 
 }
@@ -100,11 +100,13 @@ public class Person {
 
 }
 ```
+
 The file `persistence.xml` in `src/main/resources/META-INF` is configured to automatically map them to database tables using **[Hibernate](https://hibernate.org/orm/)**. Have a look at the `persistence.xml` and try to roughly understand its content.
 
 - Can you find out which database is used and where the database stores its files?
 
 4. Now add the following JUnit test _**JpaTest**_ under `src/test/java` in a new package `no.hvl.dat250.jpa.tutorial.relationshipexample`:
+
 ```java
 package no.hvl.dat250.jpa.tutorial.relationshipexample;
 
@@ -213,8 +215,9 @@ public class JpaTest {
     }
 }
 ```
+
 5. Run all tests. They should all **succeed**.
- 
+
 The `setUp()` method will create a few test entries. After the test entries are created, they will be read/deleted during the tests.
 
 - Where do the getters/setters used in the `setUp()` method come from?
@@ -224,4 +227,5 @@ The `setUp()` method will create a few test entries. After the test entries are 
 ![Project overview](./structure.png)
 
 ## Acknowledgements
+
 This tutorial is partly based on https://www.vogella.com/tutorials/JavaPersistenceAPI/article.html#example.
